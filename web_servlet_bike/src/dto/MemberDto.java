@@ -57,6 +57,7 @@ public class MemberDto {
 	 */
 	public MemberDto(int no,String id, String name, String area, String mobile_1, String mobile_2, String mobile_3,
 			String reg_date, String last_login_date, String exit_date) {
+		this.no = no;
 		this.id = id;
 		this.name = name;
 		this.area = area;
