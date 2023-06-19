@@ -343,7 +343,7 @@ public class MemberDao {
 					 exit_date = "탈퇴";
 				 }
 				 
-				 MemberDto dto = new MemberDto(id, name, area, mobile_1, mobile_2, mobile_3, reg_date, last_login_date, exit_date);
+				 MemberDto dto = new MemberDto(no,id, name, area, mobile_1, mobile_2, mobile_3, reg_date, last_login_date, exit_date);
 				 dtos.add(dto);
 			 }
 		}catch(Exception e) {

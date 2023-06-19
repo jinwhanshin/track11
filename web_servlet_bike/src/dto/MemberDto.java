@@ -4,7 +4,7 @@ public class MemberDto {
 	private String id,name,password,area,address,mobile_1,mobile_2,mobile_3,
 			gender,hobby_travel,hobby_reading,hobby_sports,
 			reg_date,update_date,last_login_date,exit_date,memberLevel;
-	int password_len;
+	int password_len,no;
 	
 	//회원정보 수정용
 	public MemberDto(String id, String name,String area, String address, String mobile_1, String mobile_2,
@@ -55,7 +55,7 @@ public class MemberDto {
 	/*
 	 관리자회원목록조회
 	 */
-	public MemberDto(String id, String name, String area, String mobile_1, String mobile_2, String mobile_3,
+	public MemberDto(int no,String id, String name, String area, String mobile_1, String mobile_2, String mobile_3,
 			String reg_date, String last_login_date, String exit_date) {
 		this.id = id;
 		this.name = name;
@@ -170,6 +170,17 @@ public class MemberDto {
 		return exit_date;
 	}
 
-	
+	public int getNo() {
+		return no;
+	}
+
+
+
+	public void setNo(int no) {
+		this.no = no;
+	}
+
+
+
 	
 }
