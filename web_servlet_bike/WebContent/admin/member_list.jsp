@@ -15,7 +15,7 @@
 		<div id="b_left">
 			<%@ include file="../common_menu_admin.jsp"%>
 		</div>
-		
+
 		<div id="b_right">
 			<p class="n_title">
 				MEMBER
