@@ -18,7 +18,7 @@ public class MemberList implements CommonExcute {
 		String search = request.getParameter("t_search");
 		String displaycount = request.getParameter("t_displaycount");
 		if(select == null) {
-			select ="n.id";
+			select ="id";
 			search ="";
 		}
 
