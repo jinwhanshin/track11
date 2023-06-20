@@ -25,9 +25,9 @@
 			</div>			
 			<p class="select_box select_box_right">
 				<select name="t_select" class="sel_box">
-					<option value="n.id" selected >ID</option>
-					<option value="n.name"  >Name</option>
-					<option value="n.mobile"  >Mobile</option>
+					<option value="id" selected >ID</option>
+					<option value="name"  >Name</option>
+					<option value="mobile"  >Mobile</option>
 				</select>
 				<select name="t_displayCount" class="sel_box">
 					<option value="5" selected>5명</option>
