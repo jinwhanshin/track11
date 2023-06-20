@@ -52,10 +52,7 @@ public class MemberList implements CommonExcute {
 		request.setAttribute("t_paging", paging);
 		request.setAttribute("t_totalCount", totalCount);
 		request.setAttribute("t_order", order);
-		
 	
-	System.out.println(dtos.get(0).getNo());	
-		
 
 	}
 
