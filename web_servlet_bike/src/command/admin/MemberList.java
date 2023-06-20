@@ -15,7 +15,8 @@ public class MemberList implements CommonExcute {
 	public void execute(HttpServletRequest request) {
 		MemberDao dao = new MemberDao();
 		String select = request.getParameter("t_select");
-		String search = request.getParameter("t_search");		
+		String search = request.getParameter("t_search");
+		String displaycount = request.getParameter("t_displaycount");
 		if(select == null) {
 			select ="n.id";
 			search ="";
@@ -42,7 +43,7 @@ public class MemberList implements CommonExcute {
 		/* paging 설정 end*/			
 		int order = totalCount - ((current_page -1) * list_setup_count);
 		
-		ArrayList<MemberDto> dtos = dao.getMemberList();
+		ArrayList<MemberDto> dtos = dao.getMemberList(select,search,start,end);
 		String paging = CommonUtil.pageListPost(current_page, total_page, pageNumber_count);
 		
 		request.setAttribute("t_dtos", dtos);
@@ -53,7 +54,7 @@ public class MemberList implements CommonExcute {
 		request.setAttribute("t_order", order);
 		
 	
-		
+	System.out.println(dtos.get(0).getNo());	
 		
 
 	}

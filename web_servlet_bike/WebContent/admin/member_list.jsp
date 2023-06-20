@@ -1,6 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../common_header.jsp"%>
+<script>
+	function goPage(pageNum){
+		member.t_nowPage.value=pageNum;
+		member.method="post";
+		member.action="Admin";
+		member.submit();
+	}
+</script>
+<form name="member">
+	<input type="hidden" name="t_nowPage">
+</form>
 		<div id="b_left">
 			<%@ include file="../common_menu_admin.jsp"%>
 		</div>

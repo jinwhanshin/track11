@@ -313,11 +313,13 @@ public class MemberDao {
 	}
 
 	//회원목록조회
-	public ArrayList<MemberDto> getMemberList() {
-		
+
+	public ArrayList<MemberDto> getMemberList(String select, String search, int start, int end) {
 		ArrayList<MemberDto> dtos = new ArrayList<MemberDto>();
-		String query="select id,name,area,mobile_1,mobile_2,mobile_3,reg_date,last_login_date,exit_date\r\n" + 
+		String query = "select rownum as rnum, id, name, area, mobile_1,mobile_2,mobile_3,reg_date,last_login_date\r\n" + 
 				"from bike_신진환_member\r\n" + 
+				"where "+select+" like '%"+search+"%'\r\n" + 
+				"and rownum <= "+end+" and rownum >="+start+"\r\n" + 
 				"order by reg_date desc";
 		int no = 0;
 		try {
@@ -375,15 +377,9 @@ public class MemberDao {
 			DBConnection.closeDB(con, ps, rs);
 		}		
 		return count;
+		
+		
 	}
 }
 
-
-
-
-
-
-
-
-
-
+	
