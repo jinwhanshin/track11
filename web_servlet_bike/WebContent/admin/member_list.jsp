@@ -73,8 +73,7 @@
 						<td>${dto.getMobile_1()}-${dto.getMobile_2()}-${dto.getMobile_3()}</td>
 						<td>${dto.getReg_date()}</td>
 						<td>${dto.getLast_login_date()}</td>
-						<td>						
-						</td>						
+						<td>${dto.getExit_date()}</td>					
 					</tr>	
 					
 				</tbody>
