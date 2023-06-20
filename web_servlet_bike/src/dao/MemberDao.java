@@ -351,6 +351,7 @@ public class MemberDao {
 				 
 				 MemberDto dto = new MemberDto(no,id, name, area, mobile_1, mobile_2, mobile_3, reg_date, last_login_date, exit_date);
 				 dtos.add(dto);
+				 System.out.println(exit_date);
 			 }
 		}catch(Exception e) {
 			System.out.println("getMemberList()오류 :"+query);
