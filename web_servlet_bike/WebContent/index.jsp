@@ -253,7 +253,7 @@
 			</p>
 			<p class="b_center_bottom">
 				<a href=""><img src="images/center_middle_4.jpg"><a href=""><img src="images/center_middle_5.jpg"><a href=""><img src="images/center_middle_6.jpg"></a>
-			</p>
+			</p>z
 		</div>
 		<div id="b_right">
 			<img src="images/center_right.jpg">
