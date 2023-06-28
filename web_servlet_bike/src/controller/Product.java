@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import command.product.*;
 import common.CommonExcute;
 import common.CommonToday;
+import dao.ProductDao;
 
 /**
  * Servlet implementation class Product
@@ -38,8 +39,7 @@ public class Product extends HttpServlet {
 		String gubun = request.getParameter("t_gubun");
 		if(gubun==null) gubun="productList";
 		String viewPage = "";
-		request.setAttribute("t_nowPage", "product");
-		
+		request.setAttribute("t_nowPage", "product");		
 		if(gubun.equals("productList"))
 		{
 			
@@ -49,7 +49,9 @@ public class Product extends HttpServlet {
 		}
 		else if(gubun.equals("productView"))
 		{
-			
+			CommonExcute product = new ProductView();
+			product.execute(request);
+			viewPage = "product/product_view.jsp";
 		}
 		else if(gubun.equals("productForm"))
 		{
@@ -62,6 +64,24 @@ public class Product extends HttpServlet {
 			CommonExcute product = new ProductSave();
 			product.execute(request);
 			viewPage ="common_alert.jsp";
+		}
+		else if(gubun.equals("update"))
+		{
+			CommonExcute product = new ProductUpdate();
+			product.execute(request);
+			viewPage = "common_alert.jsp";			
+		}
+		else if(gubun.equals("delete"))
+		{
+			CommonExcute product = new ProductDelete();
+			product.execute(request);
+			viewPage = "common_alert.jsp";
+		}
+		else if(gubun.equals("updateForm"))
+		{
+			CommonExcute product = new ProductDelete();
+			product.execute(request);
+			viewPage = "common_alert.jsp";
 		}
 		
 		RequestDispatcher rd = request.getRequestDispatcher(viewPage);

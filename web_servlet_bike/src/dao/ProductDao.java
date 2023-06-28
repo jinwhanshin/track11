@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import common.DBConnection;
 import dto.ProductDto;
+import oracle.net.aso.s;
 
 public class ProductDao {
 	
@@ -45,7 +46,7 @@ public class ProductDao {
 		int count = 0;
 		String query ="select count(*) as count \r\n" + 
 				" from bike_신진환_product\r\n" + 
-				" where product_name like '%"+search+"%' ";
+				" where "+select+" like '%"+search+"%' ";
 		System.out.println("ak"+query);
 		try {
 			con = DBConnection.getConnection();
@@ -67,12 +68,11 @@ public class ProductDao {
 	public ArrayList<ProductDto> getProductList(String select,String search,
 											int start, int end){
 		ArrayList<ProductDto> dtos = new ArrayList<>();
-		String query ="select*\r\n" + 
-				"from \r\n" + 
-				"(select rownum as rnum, tbl.*\r\n" + 
-				"from (select *\r\n" + 
-				"from bike_신진환_product \r\n" + 
-				") tbl)";
+		String query ="select * from (select rownum as rnum, tbl.*\r\n" + 
+				"from(select * from bike_신진환_product\r\n" + 
+				"where "+select+" like '%"+search+"%'\r\n" + 
+				"order by reg_date desc) tbl)\r\n" + 
+				"where rnum >="+start+" and rnum <="+end+";";
 		System.out.println("sk"+query);
 		
 		try {
@@ -100,6 +100,37 @@ public class ProductDao {
 			DBConnection.closeDB(con, ps, rs);
 		}		
 		return dtos;
+	}
+
+
+	public ProductDto getProductView(String product_name) {
+		int count = 0;
+		String query = "select * from bike_신진환_product\r\n" + 
+				"where product_name like '"+product_name+"';";
+		ProductDto dto = null;
+		try {
+			con = DBConnection.getConnection();
+			ps = con.prepareStatement(query);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				String detail = rs.getString("detail");
+				String priority = rs.getString("priority");
+				String attach = rs.getString("attach");
+				int hit = rs.getInt("hit");
+				String product_size = rs.getString("product_size");
+				int price = rs.getInt("price");
+				String reg_date = rs.getString("reg_date");
+				String reg_company = rs.getString("reg_company");
+				String reg_id = rs.getString("reg_id");
+				dto = new ProductDto(product_name, detail, product_size, reg_company, priority, attach, reg_id, reg_date, price, hit);
+			}
+		}catch(Exception e) {
+			System.out.println("getProductView()오류 :"+query);
+			e.printStackTrace();
+		}finally {
+			DBConnection.closeDB(con, ps, rs);
+		}
+		return dto;
 	}
 			
 	 // 인덱스 제품 목록

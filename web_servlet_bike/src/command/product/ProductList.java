@@ -18,7 +18,7 @@ public class ProductList implements CommonExcute {
 		String select = request.getParameter("t_select");
 		String search = request.getParameter("t_search");		
 		if(select == null) {
-			select ="n.title";
+			select ="Product_name";
 			search ="";
 		}
 
