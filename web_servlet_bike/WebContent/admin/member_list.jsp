@@ -2,16 +2,32 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../common_header.jsp"%>
 <script>
+
+	function goView(id){
+		member.t_id.value = id;
+		member.t_gubun.value = "view";
+		member.method="post";
+		member.action="Admin";
+		member.submit();
+	}
 	function goPage(pageNum){
 		member.t_nowPage.value=pageNum;
 		member.method="post";
 		member.action="Admin";
 		member.submit();
 	}
+	function goSearch(){
+		member.t_gubun.value = "memberList";
+		member.method="post";
+		member.action="Admin";
+		memeber.submit();
+	}
 </script>
 <form name="member">
 	<input type="hidden" name="t_nowPage">
-</form>
+	<input type="hidden" name="t_gubun">
+	<input type="hidden" name="t_id">
+
 		<div id="b_left">
 			<%@ include file="../common_menu_admin.jsp"%>
 		</div>
@@ -25,9 +41,9 @@
 			</div>			
 			<p class="select_box select_box_right">
 				<select name="t_select" class="sel_box">
-					<option value="id" selected >ID</option>
-					<option value="name"  >Name</option>
-					<option value="mobile"  >Mobile</option>
+					<option value="id" <c:if test="${t_select eq 'id'}">selected</c:if>>ID</option>
+					<option value="name" <c:if test="${t_select eq 'name'}">selected</c:if>>NAME</option>
+					<option value="mobile_3" <c:if test="${t_select eq 'mobile_3'}">selected</c:if>>MOBILE</option>
 				</select>
 				<select name="t_displayCount" class="sel_box">
 					<option value="5" selected>5명</option>

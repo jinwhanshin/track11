@@ -7,15 +7,19 @@ public class CommonUtil {
 	
 	//news 첨부 경로
 	public static String getFile_dir_news(){
-		String newsDir ="C:/jslsjw/web_servlet_bike/WebContent/attach/news";		
+		String newsDir ="C:/jslsjw/track11/web_servlet_bike/WebContent/attach/news";		
 		return newsDir;
 	}
 	//공지사항 첨부 경로
 	public static String getFile_dir_notice(){
-		String noticeDir ="C:/jslsjw/web_servlet_bike/WebContent/attach/notice";		
+		String noticeDir ="C:/jslsjw/track11/web_servlet_bike/WebContent/attach/notice";		
 		return noticeDir;
 	}
-	
+	//제품 첨부경로
+	public static String getFile_dir_product(){
+		String productDir ="C:/jslsjw/track11/web_servlet_bike/WebContent/attach/product";		
+		return productDir;
+	}
 	//오늘날짜
 	public static String getToday(){
 		Date time = new Date();
