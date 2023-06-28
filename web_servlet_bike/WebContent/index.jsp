@@ -308,12 +308,31 @@
 		<div id="b_center">
 			<p class="b_center_top"><img src="images/center_top.jpg"></p>
 			<div class="b_center_middle">
-				<a href=""><img src="images/center_middle_1.jpg">
+			<c:forEach items="${t_productDtos}" var="dto">
+				<a href="">
+				<img src="attach/product/${dto.getAttach()}">
 				<div class="over">
-					<p class="p_name">울트라리스크는 울트라</p>
-					<p class="p_price">250,000</p>
+					<p class="p_name">${dto.getProduct_name()}</p>
+					<p class="p_price">${dto.getPrice()}</p>
 				</div>
 				</a>
+				</c:forEach>
+<style>
+    .b_center_middle a .overReady{
+      position:absolute;
+      top:0;      
+      background:#F2F2F2;
+      width:105px;
+      height:75px;
+      padding-top:30px;
+   }   
+   .overReady p{
+      text-align:center;
+   }
+</style>
+				<c:forEach var="k" begin="1" end="${6 - t_productDtos.size()}" step="1">
+					준비중~~
+				</c:forEach>
 			</div>			
 		</div>
 		

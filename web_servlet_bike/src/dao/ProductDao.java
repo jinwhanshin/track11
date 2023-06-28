@@ -24,7 +24,7 @@ public class ProductDao {
 				"values\r\n" + 
 				"("+dto.getHit()+", '"+dto.getPriority()+"', '"+dto.getAttach()+"', '"+dto.getProduct_name()+"', '"+dto.getDetail()+"', '"+dto.getProduct_size()+"', "+dto.getPrice()+", to_date('"+dto.getReg_date()+"', 'yyyy-mm-dd hh:mi:ss'), '"+dto.getReg_company()+"', '"+dto.getReg_id()+"')\r\n" + 
 				"";
-		
+		System.out.println("jk"+query);
 		try {
 			con = DBConnection.getConnection();
 			ps  = con.prepareStatement(query);
@@ -45,7 +45,8 @@ public class ProductDao {
 		int count = 0;
 		String query ="select count(*) as count \r\n" + 
 				" from bike_신진환_product\r\n" + 
-				" where "+select+" like '%"+search+"%' ";
+				" where product_name like '%"+search+"%' ";
+		System.out.println("ak"+query);
 		try {
 			con = DBConnection.getConnection();
 			ps  = con.prepareStatement(query);
@@ -72,6 +73,7 @@ public class ProductDao {
 				"from (select *\r\n" + 
 				"from bike_신진환_product \r\n" + 
 				") tbl)";
+		System.out.println("sk"+query);
 		
 		try {
 			con = DBConnection.getConnection();
