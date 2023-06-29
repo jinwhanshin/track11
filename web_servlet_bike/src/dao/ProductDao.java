@@ -25,7 +25,6 @@ public class ProductDao {
 				"values\r\n" + 
 				"("+dto.getHit()+", '"+dto.getPriority()+"', '"+dto.getAttach()+"', '"+dto.getProduct_name()+"', '"+dto.getDetail()+"', '"+dto.getProduct_size()+"', "+dto.getPrice()+", to_date('"+dto.getReg_date()+"', 'yyyy-mm-dd hh:mi:ss'), '"+dto.getReg_company()+"', '"+dto.getReg_id()+"')\r\n" + 
 				"";
-		System.out.println("jk"+query);
 		try {
 			con = DBConnection.getConnection();
 			ps  = con.prepareStatement(query);
@@ -46,8 +45,7 @@ public class ProductDao {
 		int count = 0;
 		String query ="select count(*) as count \r\n" + 
 				" from bike_신진환_product\r\n" + 
-				" where "+select+" like '%"+search+"%' ";
-		System.out.println("ak"+query);
+				" where "+select+" like '%"+search+"%'";
 		try {
 			con = DBConnection.getConnection();
 			ps  = con.prepareStatement(query);
@@ -72,8 +70,7 @@ public class ProductDao {
 				"from(select * from bike_신진환_product\r\n" + 
 				"where "+select+" like '%"+search+"%'\r\n" + 
 				"order by reg_date desc) tbl)\r\n" + 
-				"where rnum >="+start+" and rnum <="+end+";";
-		System.out.println("sk"+query);
+				"where rnum >="+start+" and rnum <="+end+"";
 		
 		try {
 			con = DBConnection.getConnection();

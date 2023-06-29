@@ -1,13 +1,13 @@
 package dto;
 
 public class ProductDto {
-	String product_name, detail, product_size, reg_company, priority, attach, reg_id, reg_date;
+	String product_name, reg_detail, product_size, reg_company, priority, attach, reg_id, reg_date;
 	int price, hit;
 	public ProductDto(String product_name, String detail, String product_size, String reg_company, String priority,
 			String attach, String reg_id, String reg_date, int price, int hit) {
 		super();
 		this.product_name = product_name;
-		this.detail = detail;
+		this.reg_detail = detail;
 		this.product_size = product_size;
 		this.reg_company = reg_company;
 		this.priority = priority;
@@ -21,7 +21,7 @@ public class ProductDto {
 		return product_name;
 	}
 	public String getDetail() {
-		return detail;
+		return reg_detail;
 	}
 	public String getProduct_size() {
 		return product_size;

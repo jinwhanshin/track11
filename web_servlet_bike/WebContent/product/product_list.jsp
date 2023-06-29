@@ -4,30 +4,30 @@
 
 <script>
 
-	function goView(id)
+	function goView(product_name)
 	{
-		member.t_id.value = id;
-		member.t_gubun.value = "view";
-		member.method="post";
-		member.action="Admin";
-		member.submit();
+		product.t_product_name.value = product_name;
+		product.t_gubun.value = "productView";
+		product.method="post";
+		product.action="Product";
+		product.submit();
 	}
 
 	function goPage(pageNum){
 		
-		member.t_gubun.value = "memberList";
-		member.t_nowPage.value = pageNum;
-		member.method="post";
-		member.action="Admin";
-		member.submit();		
+		product.t_gubun.value = "productList";
+		product.t_nowPage.value = pageNum;
+		product.method="post";
+		product.action="Product";
+		product.submit();		
 	}
 
 	function goSearch(){
 
-		member.t_gubun.value = "memberList";
-		member.method="post";
-		member.action="Admin";
-		member.submit();
+		product.t_gubun.value = "productList";
+		product.method="post";
+		product.action="Product";
+		product.submit();
 	}
 	function goProductForm(){
 		product.t_gubun.value ="productForm";
@@ -40,15 +40,13 @@
 <form name="product">
 	<input type="hidden" name="t_nowPage">
 	<input type="hidden" name="t_gubun">
-	<input type="hidden" name="t_id">
+	<input type="hidden" name="t_product_name">
 	
-</form>
 <div id="b_left">
 	<%@ include file="../common_menu_admin.jsp" %>
 </div>
 		<div id="b_right">
-			<p class="n_
-			title">
+			<p class="n_title">
 				PRODUCT
 			</p>
 			<div class="record_group record_group_left">
@@ -56,9 +54,8 @@
 			</div>			
 			<p class="select_box select_box_right">
 				<select name="t_select" class="sel_box">
-					<option value="id"  <c:if test="${t_select eq 'id' }">selected </c:if>>ID</option>
-					<option value="name"  <c:if test="${t_select eq 'name' }">selected </c:if>>NAME</option>
-					<option value="mobile_3"  <c:if test="${t_select eq 'mobile_3' }">selected </c:if>>Mobile</option>
+					<option value="id"  <c:if test="${t_select eq 'id' }">selected </c:if>>제품명</option>
+					<option value="name"  <c:if test="${t_select eq 'name' }">selected </c:if>>회사명</option>
 				</select>
 				<select name="t_displayCount" class="sel_box">
 					<option value="5"  <c:if test="${t_displayCount eq 5 }">selected </c:if>>  5명</option>
@@ -77,20 +74,19 @@
 					<col width="10%">
 					<col width="10%">
 					<col width="10%">
-					<col width="20%">
-					<col width="15%">
+					<col width="5%">
+					<col width="30%">
 					<col width="25%">
 					<col width="5%">
 				</colgroup>
 				<thead>
 					<tr>
-						<th>No</th>
+						<th>Product Number</th>
 						<th>Image</th>
 						<th>Product Name</th>
 						<th>Price</th>
-						<th>Product Size연락처</th>
-						<
-						th>Reg Date가입일자</th>
+						<th>Product Size</th>
+						<th>Reg Date</th>
 						<th>Reg Company</th>
 						<th>Reg Id</th>
 					</tr>
@@ -103,14 +99,13 @@
 							${order}
 							<c:set var="order" value="${order -1}"></c:set>
 						</td>
-						
-						<td class="t_left"><a href="javascript:goView('${dto.getId() }')">${dto.getId() }</a></td>
-						<td>${dto.getName() }</td>
-						<td>${dto.getArea() }</td>
-						<td>${dto.getMobile_1() }-${dto.getMobile_2() }-${dto.getMobile_3() }</td>
-						<td>${dto.getReg_date() }</td>
-						<td>${dto.getLast_login_date() }</td>
-						<td> ${dto.getExit_date() }</td>
+						<td><img src="attach/product/${dto.getAttach()}"></img></td>
+						<td class="t_left"><a href="javascript:goView('${dto.getProduct_name() }')">${dto.getProduct_name() }</a></td>
+						<td>${dto.getPrice()}</td>
+						<td>${dto.getProduct_size()}</td>
+						<td>${dto.getReg_date()}</td>
+						<td>${dto.getReg_company()}</td>
+						<td>${dto.getReg_id()}</td>
 					</tr>	
 					
 				</tbody>
@@ -126,7 +121,7 @@
 			</div>	
 
 		</div>	
-	
+	</form>
 
 <%@include file = "../common_footer.jsp" %>
 </body>

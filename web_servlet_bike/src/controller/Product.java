@@ -67,19 +67,19 @@ public class Product extends HttpServlet {
 		}
 		else if(gubun.equals("update"))
 		{
-			CommonExcute product = new ProductUpdate();
+			CommonExcute product = new ProductDelete();
 			product.execute(request);
 			viewPage = "common_alert.jsp";			
 		}
 		else if(gubun.equals("delete"))
 		{
-			CommonExcute product = new ProductDelete();
+			CommonExcute product = new ProductUpdate();
 			product.execute(request);
 			viewPage = "common_alert.jsp";
 		}
 		else if(gubun.equals("updateForm"))
 		{
-			CommonExcute product = new ProductDelete();
+			CommonExcute product = new ProductUpdate();
 			product.execute(request);
 			viewPage = "common_alert.jsp";
 		}
